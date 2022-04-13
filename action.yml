@@ -1,0 +1,14 @@
+name: "JOSM for GitHub Actions"
+description: "Validate MapCSS files for JOSM"
+inputs:
+  files-to-validate:
+    description: The files to have JOSM validate
+    required: True
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - '/usr/bin/josm'
+    - 'validate'
+    - '--input'
+    - ${{ inputs.files-to-validate }}
